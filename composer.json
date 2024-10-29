@@ -1,0 +1,31 @@
+{
+  "name": "mittwald/mstudio-ext-webhooks",
+  "description": "Library for processing webhook calls for mittwald mStudio extensions",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Mittwald\\MStudio\\Webhooks\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Mittwald\\MStudio\\Webhooks\\": "tests/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Martin Helmich",
+      "email": "m.helmich@mittwald.de"
+    }
+  ],
+  "require": {
+    "mittwald/api-client": "^2.1",
+    "psr/http-message": "^2.0",
+    "psr/log": "^3.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^11.4",
+    "nyholm/psr7": "^1.8"
+  }
+}
