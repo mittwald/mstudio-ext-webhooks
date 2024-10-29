@@ -6,6 +6,9 @@ use Mittwald\ApiClient\Error\UnexpectedResponseException;
 use Mittwald\ApiClient\Generated\V2\Clients\Marketplace\ExtensionGetPublicKey\ExtensionGetPublicKeyRequest;
 use Mittwald\ApiClient\MittwaldAPIV2Client;
 
+/**
+ * Loads a webhook verification key from the mittwald mStudio API.
+ */
 readonly class RemoteKeyLoader implements KeyLoader
 {
     public function __construct(private MittwaldAPIV2Client $client)
