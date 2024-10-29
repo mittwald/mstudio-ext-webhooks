@@ -14,7 +14,7 @@ use function PHPUnit\Framework\isTrue;
 class SignatureVerifierTest extends TestCase
 {
     #[Test]
-    public function shouldVerifySignatureAgainstKey()
+    public function shouldVerifySignatureAgainstKey(): void
     {
         $req = new Request(
             method: "POST",
@@ -35,7 +35,7 @@ class SignatureVerifierTest extends TestCase
     }
 
     #[Test]
-    public function shouldFailWhenSignatureDoesNotMatch()
+    public function shouldFailWhenSignatureDoesNotMatch(): void
     {
         $req = new Request(
             method: "POST",
@@ -56,7 +56,7 @@ class SignatureVerifierTest extends TestCase
     }
 
     #[Test]
-    public function shouldFailWhenKeyCannotBeFound()
+    public function shouldFailWhenKeyCannotBeFound(): void
     {
         $req = new Request(
             method: "POST",

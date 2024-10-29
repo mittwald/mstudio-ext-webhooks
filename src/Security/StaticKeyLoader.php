@@ -4,6 +4,9 @@ namespace Mittwald\MStudio\Webhooks\Security;
 
 readonly class StaticKeyLoader implements KeyLoader
 {
+    /**
+     * @param string[] $keys
+     */
     public function __construct(private array $keys)
     {
     }

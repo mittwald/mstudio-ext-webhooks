@@ -18,7 +18,7 @@ use function PHPUnit\Framework\once;
 class WebhookAuthorizerTest extends TestCase
 {
     #[Test]
-    public function shouldFailWhenRequestDoesNotIncludeSignature()
+    public function shouldFailWhenRequestDoesNotIncludeSignature(): void
     {
         $sut = new WebhookAuthorizer(
             $this->createStub(SignatureVerifier::class),
@@ -31,7 +31,7 @@ class WebhookAuthorizerTest extends TestCase
     }
 
     #[Test]
-    public function shouldVerifySignatureWhenPresentInRequest()
+    public function shouldVerifySignatureWhenPresentInRequest(): void
     {
         $req = (new Request(method: "POST", uri: "/webhook"))
             ->withAddedHeader('x-marketplace-signature', 'test-signature')
