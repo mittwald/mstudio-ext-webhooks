@@ -21,7 +21,10 @@ class CachingKeyLoader implements KeyLoader
 
         $result = $this->cache->getItem($cacheKey);
         if ($result->isHit()) {
-            return $result->get();
+            $value = $result->get();
+            if (is_string($value) || is_null($value)) {
+                return $value;
+            }
         }
 
         $key = $this->inner->loadPublicKey($serial);

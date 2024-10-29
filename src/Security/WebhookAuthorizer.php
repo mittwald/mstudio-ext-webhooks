@@ -24,6 +24,11 @@ readonly class WebhookAuthorizer
             return false;
         }
 
+        if (strlen($signature[0]) === 0 || strlen($serial[0]) === 0) {
+            $this->logger->warning('signature and serial must not be empty');
+            return false;
+        }
+
         return $this->signatureVerifier->verifyRequestSignature(
             $request,
             $signature[0],
