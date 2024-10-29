@@ -4,11 +4,19 @@ namespace Mittwald\MStudio\Webhooks\Security;
 
 use Psr\Cache\CacheItemPoolInterface;
 
+/**
+ * CachingKeyLoader is a helper class that can be used to decorate a key loader
+ * with a PSR-6 compatible cache.
+ */
 class CachingKeyLoader implements KeyLoader
 {
     private KeyLoader $inner;
     private CacheItemPoolInterface $cache;
 
+    /**
+     * @param KeyLoader $inner The key loader to decorate
+     * @param CacheItemPoolInterface $cache The cache implementation
+     */
     public function __construct(KeyLoader $inner, CacheItemPoolInterface $cache)
     {
         $this->inner = $inner;
@@ -21,7 +29,10 @@ class CachingKeyLoader implements KeyLoader
 
         $result = $this->cache->getItem($cacheKey);
         if ($result->isHit()) {
-            return $result->get();
+            $value = $result->get();
+            if (is_string($value) || is_null($value)) {
+                return $value;
+            }
         }
 
         $key = $this->inner->loadPublicKey($serial);
